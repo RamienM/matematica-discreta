@@ -26,8 +26,8 @@ import java.util.Set;
  *
  * Podeu fer aquesta entrega en grups de com a màxim 3 persones, i necessitareu com a minim Java 8.
  * Per entregar, posau a continuació els vostres noms i entregau únicament aquest fitxer.
- * - Nom 1:
- * - Nom 2:
+ * - Nom 1: Miguel Angel Montero Pazmiño
+ * - Nom 2: Rubén Ramis Martínez
  * - Nom 3:
  *
  * L'entrega es farà a través d'una tasca a l'Aula Digital abans de la data que se us hagui
@@ -104,6 +104,9 @@ class Entrega {
                         return false;
                     }
                 }
+            }
+            if(contador ==0){
+                return false;
             }
         }
         return true; // TO DO
