@@ -58,7 +58,6 @@ class Entrega {
         BiPredicate<Integer, Integer> p,
         Predicate<Integer> q,
         Predicate<Integer> r) {
-        //Solucionar
         for(int i = 0; i<universe.length;i++){
             for(int j = 0; j<universe.length;j++){
                Boolean bq=q.test(universe[i]);
@@ -77,7 +76,23 @@ class Entrega {
      * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
      */
     static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
-      return false; // TO DO
+        for(int i = 0; i<universe.length;i++){
+            int contador = 0;
+            for(int j = 0; j<universe.length;j++){
+                Boolean bp=p.test(universe[i]);
+                Boolean bq = q.test(universe[j]);
+                if(!bp||bq){
+                    contador++;
+                    if(contador>1){
+                        return false;
+                    }
+                }
+            }
+            if(contador == 0){
+                return false;
+            }
+        }
+      return true; // TO DO
     }
 
     /*
@@ -159,13 +174,13 @@ class Entrega {
       // Exercici 3
       // ¬(∃x. ∀y. y ⊆ x) ?
 
-      assertThat(
+      /*assertThat(
           exercici3(new int[][] { {1, 2}, {0, 3}, {1, 2, 3}, {} })
       );
 
       assertThat(
           !exercici3(new int[][] { {1, 2}, {0, 3}, {1, 2, 3}, {}, {0, 1, 2, 3} })
-      );
+      );*/
 
       // Exercici 4
       // És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
