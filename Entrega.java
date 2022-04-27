@@ -58,8 +58,10 @@ class Entrega {
         BiPredicate<Integer, Integer> p,
         Predicate<Integer> q,
         Predicate<Integer> r) {
+        //Solucionar
+        Predicate derecha = q.and(r);
 
-      return false; // TO DO
+      return p.equals((BiPredicate)derecha); // TO DO
     }
 
     /*
@@ -83,7 +85,19 @@ class Entrega {
      * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
      */
     static boolean exercici4(int[] universe, int n) {
-      return false; // TO DO
+        for(int i = 0; i<universe.length;i++){
+            int contador = 0;
+            for(int j = 0; j<universe.length;j++){
+                int auxiliar = universe[i]*universe[j];
+                if(auxiliar%n==1){
+                    contador++;
+                    if(contador>1){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true; // TO DO
     }
 
     /*
