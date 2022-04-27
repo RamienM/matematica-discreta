@@ -59,9 +59,18 @@ class Entrega {
         Predicate<Integer> q,
         Predicate<Integer> r) {
         //Solucionar
-        Predicate derecha = q.and(r);
+        for(int i = 0; i<universe.length;i++){
+            for(int j = 0; j<universe.length;j++){
+               Boolean bq=q.test(universe[i]);
+               Boolean br = r.test(universe[j]);
+               Boolean bp = p.test(universe[i], universe[j]);
+               if(!(!bp||(bq&&br))){
+                return false;
+               }
+            }
+        }
 
-      return p.equals((BiPredicate)derecha); // TO DO
+      return true; // TO DO
     }
 
     /*
