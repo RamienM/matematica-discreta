@@ -224,11 +224,9 @@ class Entrega {
      * `p` és un array de conjunts, haureu de comprovar que siguin elements d'`a`. Podeu suposar que
      * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
      */
-    static boolean exercici1(int[] a, int[][] p) {
-        System.out.print(p);
-        int unico=1;
-        for(int n=0;n<a.length && unico==1;n++){   
-            unico=0; 
+    static boolean exercici1(int[] a, int[][] p) {        
+       for(int n=0;n<a.length;n++){   
+           int unico=0; 
             int elemento_conjunto=a[n];       
             for(int i=0;i<p.length;i++){
                 for(int j=0;j<p[i].length;j++){                    
