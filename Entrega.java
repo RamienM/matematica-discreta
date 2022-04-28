@@ -28,7 +28,7 @@ import java.util.Set;
  * Per entregar, posau a continuació els vostres noms i entregau únicament aquest fitxer.
  * - Nom 1: Miguel Angel Montero Pazmiño
  * - Nom 2: Rubén Ramis Martínez
- * - Nom 3:
+ * - Nom 3: Harol Jorge López
  *
  * L'entrega es farà a través d'una tasca a l'Aula Digital abans de la data que se us hagui
  * comunicat i vos recomanam que treballeu amb un fork d'aquest repositori per seguir més fàcilment
