@@ -255,6 +255,44 @@ class Entrega {
      * Podeu soposar que `x` pertany a `a` i que `a` està ordenat de menor a major.
      */
     static boolean exercici2(int[] a, int[][] rel, int x) {
+        //int f=rel.length;
+        int reflexivo=1;
+        
+    for(int n=0;n<a.length;n++){
+        int j=0,i=0;
+        int Val_Act=a[n];
+        int Rel_AB[]={rel[i][j],rel[i][j]};
+        boolean comprobado=false;
+        for(;i<rel.length-1 ;i++){
+  
+                int Rel_BC[]={rel[i][j],rel[i+1][j+1]};
+                //int Rel_BC[]={rel[i][j+2],rel[i+2][j+2]};
+                if((Val_Act==Rel_AB[0] && Val_Act==Rel_AB[1] || Val_Act==Rel_BC[0] && Val_Act==Rel_BC[1]) && !comprobado){
+                 //REFEXIVA   
+                 reflexivo++;
+                 comprobado=true;
+                }
+                if((Rel_AB[0]==Rel_BC[1]&& Rel_AB[1]==Rel_BC[0] )&& Rel_AB[0]!=Rel_AB[1] ){
+                    //ANTISIMETRICA
+                    return false;
+                }
+                if(Rel_AB[1]==Rel_BC[0] && Rel_AB[0]!=Rel_BC[1]){
+                    //TRANSITIVA
+                    return false;
+                }
+               
+            
+        }
+        if(reflexivo==a.length){
+            return true;
+        } 
+        i++;
+        /*if(!trobado){
+            
+        return false;
+        }*/
+
+}
         //Para que sea de orden parcial hay que comprobar que es reflexiva
         //aRa, buscar en el array si hay {a,a}
         //Tambien tiene que cumplir que sea antisimétrica
