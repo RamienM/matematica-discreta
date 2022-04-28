@@ -255,6 +255,12 @@ class Entrega {
      * Podeu soposar que `x` pertany a `a` i que `a` està ordenat de menor a major.
      */
     static boolean exercici2(int[] a, int[][] rel, int x) {
+        //Para que sea de orden parcial hay que comprobar que es reflexiva
+        //aRa, buscar en el array si hay {a,a}
+        //Tambien tiene que cumplir que sea antisimétrica
+        //aRb y bRa entoces a==b, 
+        //Finalmente debe cumplir que sea transitiva
+        //aRb y bRc entoces aRc,
       return false; // TO DO
     }
 
