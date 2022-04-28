@@ -102,6 +102,9 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
+        for(int i = 0; i<universe.length){
+
+        }
       return false; // TO DO
     }
 
@@ -174,13 +177,13 @@ class Entrega {
       // Exercici 3
       // ¬(∃x. ∀y. y ⊆ x) ?
 
-      /*assertThat(
+      assertThat(
           exercici3(new int[][] { {1, 2}, {0, 3}, {1, 2, 3}, {} })
       );
 
       assertThat(
           !exercici3(new int[][] { {1, 2}, {0, 3}, {1, 2, 3}, {}, {0, 1, 2, 3} })
-      );*/
+      );
 
       // Exercici 4
       // És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
