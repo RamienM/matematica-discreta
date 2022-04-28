@@ -225,7 +225,30 @@ class Entrega {
      * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
      */
     static boolean exercici1(int[] a, int[][] p) {
-      return false; // TO DO
+        System.out.print(p);
+        int unico=1;
+        for(int n=0;n<a.length && unico==1;n++){   
+            unico=0; 
+            int elemento_conjunto=a[n];       
+            for(int i=0;i<p.length;i++){
+                for(int j=0;j<p[i].length;j++){                    
+                    int elemento_partes=p[i][j];
+                    if(elemento_conjunto==elemento_partes){
+                        unico++;
+                        if(unico>1){//Si un numero aparece en más de un subconjunto,no puede ser una partición
+                            return false; 
+                        }
+                    }
+    
+                }
+            }
+            if(unico==0){//Si no encontramos un elemento del conjunto dentro de los subconjuntos, no puede ser partición
+                return false;
+            }
+            
+        }
+
+      return true; // TO DO
     }
 
     /*
