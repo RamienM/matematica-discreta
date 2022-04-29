@@ -102,8 +102,12 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
-        for(int i = 0; i<universe.length){
-
+        for(int i = 0; i<universe.length;i++){
+            int x[]= universe[i];
+            for(int j= 0; j<universe[i].length;j++){
+                int y[]=universe[j];
+                //Comparar si es un subconjunto
+            }
         }
       return false; // TO DO
     }
