@@ -107,6 +107,10 @@ class Entrega {
             for(int j= 0; j<universe[i].length;j++){
                 int y[]=universe[j];
                 //Comparar si es un subconjunto
+                for(int t= 0; t<x.length;t++){
+                    for(int u=0; u<y.length;u++){
+                    }
+                }
             }
         }
       return false; // TO DO
