@@ -362,7 +362,56 @@ class Entrega {
         static final int BIJECTIVE = INJECTIVE + SURJECTIVE;
 
         static int exercici4(int[] dom, int[] codom, Function<Integer, Integer> f) {
-            return -1; // TO DO
+            boolean inyectiva = false;
+            boolean exhaustiva = true;
+            int[] img = new int[dom.length];
+            int k = 0;
+            int min = 0;
+            for (int x : dom) {
+                img[k] = f.apply(x);
+                k++;
+            }
+            Arrays.sort(img);
+
+            for (int x : codom) {
+                boolean dentro = false;
+                for (int i = 0; i < img.length; i++) {
+                    if (img[i] == x) {
+                        dentro = true;
+                    }
+                }
+                if (!dentro) {
+                    exhaustiva = false;
+                }
+            }
+
+            if (dom.length == codom.length && exhaustiva) {
+                inyectiva = true;
+            } else {
+                boolean repe = false;
+                for (int i = 0; i < img.length; i++) {
+                    for (int j = i + 1; j < img.length; j++) {
+                        if (img[i] == img[j]) {
+                            repe = true;
+                        }
+                    }
+                }
+                if (repe == false) {
+                    inyectiva = true;
+                }
+            }
+
+            if (inyectiva && exhaustiva) {
+                return BIJECTIVE;
+            } else {
+                if (inyectiva) {
+                    return INJECTIVE;
+                }
+                if (exhaustiva) {
+                    return SURJECTIVE;
+                }
+            }
+            return NOTHING_SPECIAL;
         }
 
         /*
@@ -465,6 +514,204 @@ class Entrega {
         }
     }
 
+    static class Tema3 {
+        //Función EXTRA: Calula el máximo común divisor
+        public static int mcd(int a, int b) {
+            //DECLARACIONES
+            int dividendo, divisor;
+            //comprobamos el numero más grande
+            if (a > b) {
+                dividendo = a;
+                divisor = b;
+            } else {
+                dividendo = b;
+                divisor = a;
+            }
+
+            //bucle para encontrar el mcd
+            while (divisor != 0) {
+                int aux = divisor;
+                divisor = dividendo % divisor;
+                dividendo = aux;
+            }
+            return dividendo; // TO DO
+        }
+
+        /*
+         * Donat `a`, `b` retornau el màxim comú divisor entre `a` i `b`.
+         *
+         * Podeu suposar que `a` i `b` són positius.
+         */
+        static int exercici1(int a, int b) {
+            return mcd(a, b); //Llama a la función del mcd
+        }
+
+        /*
+         * Es cert que `a``x` + `b``y` = `c` té solució?.
+         *
+         * Podeu suposar que `a`, `b` i `c` són positius.
+         */
+        static boolean exercici2(int a, int b, int c) {
+            if (c % mcd(a, b) == 0) {
+                return true;
+            } else {
+                return false;
+            } // TO DO
+        }
+        /*
+         * Quin es l'invers de `a` mòdul `n`?
+         *
+         * Retornau l'invers sempre entre 1 i `n-1`, en cas que no existeixi retornau -1
+         */
+        static int exercici3(int a, int n) {
+            for (int x = 1; x < n; x++) {
+                if (x * a % n == 1) {
+                    return x;
+                }
+            }
+            return -1;
+        }
+        /*
+         * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)
+         */
+        static void tests() {
+          // Exercici 1
+          // `mcd(a,b)`
+          assertThat(
+                  exercici1(2, 4) == 2
+          );
+          assertThat(
+                  exercici1(1236, 984) == 12
+          );
+          // Exercici 2
+          // `a``x` + `b``y` = `c` té solució?
+          assertThat(
+                  exercici2(4,2,2)
+          );
+          assertThat(
+                  !exercici2(6,2,1)
+          );
+          // Exercici 3
+          // invers de `a` mòdul `n`
+          assertThat(exercici3(2, 5) == 3);
+          assertThat(exercici3(2, 6) == -1);
+        }
+      }
+
+    static class Tema4 {
+        /*
+         * Donada una matriu d'adjacencia `A` d'un graf no dirigit, retornau l'ordre i la mida del graf.
+         */
+        static int[] exercici1(int[][] A) {
+            int aristas= 0;
+            for(int i = 0; i<A.length;i++){
+                for(int j = 0; j<A[i].length;j++){
+                    if(A[i][j]==1){
+                        aristas++;
+                    }
+                }
+            }
+          return new int[]{A.length,(aristas/2)}; // TO DO
+        }
+    
+        /*
+         * Donada una matriu d'adjacencia `A` d'un graf no dirigit, digau si el graf es eulerià.
+         */
+        static boolean exercici2(int[][] A) {
+            int aristas;
+            boolean euleriano = true;
+            for(int i = 0; i<A.length;i++){
+                aristas = 0;
+                for(int j = 0; j<A[i].length;j++){
+                    if(A[i][j]==1){
+                        aristas++;
+                    }
+                }
+                if(aristas%2!=0){
+                    return false;
+                }
+            }
+          return true; // TO DO
+        }
+    
+        /*
+         * Donat `n` el número de fulles d'un arbre arrelat i `d` el nombre de fills dels nodes interiors,
+         * retornau el nombre total de vèrtexos de l'arbre
+         *
+         */
+        static int exercici3(int n, int d) {
+            int contador = n;
+            int nodos = n;
+            while(nodos>=1){
+                nodos = nodos/d;
+                if(nodos%d != 0){
+                    contador++;
+                }
+                contador += nodos;
+            }
+          return contador; // TO DO
+        }
+    
+        /*
+         * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
+         */
+        static boolean exercici4(int[][] A) {
+            int aristas;
+            boolean euleriano = true;
+            for(int i = 0; i<A.length;i++){
+                aristas = 0;
+                for(int j = 0; j<A[i].length;j++){
+                    if(A[i][j]==1){
+                        aristas++;
+                    }
+                }
+                if(aristas%2!=0){
+                    return false;
+                }
+            }
+          return true; // TO DO
+        }
+        /*
+         * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)
+         */
+        static void tests() {
+          // Exercici 1
+          // `ordre i mida`
+    
+         assertThat(
+                  exercici1(new int[][] { {0, 1, 0}, {1, 0, 1}, {0,1, 0}}) == new int[] {3, 3}
+          );
+    
+          assertThat(
+                  exercici1(new int[][] { {0, 1, 0, 1}, {1, 0, 1, 1}, {0 , 1, 0, 1}, {1, 1, 1, 0}}) == new int[] {4, 5}
+          );
+    
+          // Exercici 2
+          // `Es eulerià?`
+    
+          assertThat(
+                  exercici2(new int[][] { {0, 1, 1}, {1, 0, 1}, {1, 1, 0}})
+          );
+          assertThat(
+                  !exercici2(new int[][] { {0, 1, 0}, {1, 0, 1}, {0,1, 0}})
+          );
+          // Exercici 3
+          // `Quants de nodes té l'arbre?`
+          assertThat(exercici3(5, 2) == 9);
+          assertThat(exercici3(7, 3) == 10);
+    
+          // Exercici 4
+          // `Conté algún cicle?`
+          assertThat(
+                  !exercici4(new int[][] { {0, 1, 1}, {1, 0, 1}, {1, 1, 0}})
+          );
+          assertThat(
+                  exercici4(new int[][] { {0, 1, 0}, {1, 0, 1}, {0, 1, 0}})
+          );
+    
+        }
+      }
+
     /*
      * Aquest mètode `main` conté alguns exemples de paràmetres i dels resultats que
      * haurien de donar
@@ -476,8 +723,10 @@ class Entrega {
      * sigui `true`.
      */
     public static void main(String[] args) {
-        Tema1.tests();
-        Tema2.tests();
+        //Tema1.tests();
+        //Tema2.tests();
+        Tema3.tests();
+        //Tema4.tests();
     }
 
     static void assertThat(boolean b) {
